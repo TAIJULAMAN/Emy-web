@@ -1,0 +1,14 @@
+node_modules/
+.DS_Store
+*.log
+.env
+.env.*
+ask-emy.env
+.firebase/
+backups/
+outputs/
+work/
+tmp*
+*.bak
+*.tmp
+generate-log.txt
