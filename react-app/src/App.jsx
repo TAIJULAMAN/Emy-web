@@ -15,7 +15,7 @@ import SignUp from './pages/SignUp';
 function App() {
   return (
     <Router>
-      <div className="react-app-shell">
+      <div className="react-app-shell flex flex-col min-h-screen">
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />

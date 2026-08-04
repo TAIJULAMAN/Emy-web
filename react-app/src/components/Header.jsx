@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 function Logo() {
   return (
@@ -13,6 +14,8 @@ function Logo() {
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { currentUser, logout } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -80,12 +83,43 @@ export default function Header() {
           ))}
 
           <div className="ml-2 flex items-center gap-3 border-l border-[#001B47]/10 pl-4">
-            <Link to="/sign-in" className="cursor-pointer rounded-full border border-[#001B47]/10 bg-white px-6 py-2 text-xl font-bold text-[#001B47] shadow-sm backdrop-blur transition hover:border-[#001B47]/20 hover:bg-gray-50 hover:-translate-y-0.5">
-              Sign In
-            </Link>
-            <Link to="/sign-up" className="cursor-pointer rounded-full bg-orange-500 px-6 py-2 text-xl font-bold text-white shadow-lg shadow-orange-500/20 transition hover:bg-orange-600 hover:-translate-y-0.5">
-              Sign up
-            </Link>
+            {currentUser ? (
+              <div className="group relative flex items-center gap-3 rounded-full border border-orange-100 bg-orange-50 p-1.5 pr-4 transition hover:bg-orange-100">
+                <div className="h-10 w-10 overflow-hidden rounded-full border-2 border-white shadow-sm bg-orange-200 flex items-center justify-center">
+                  {currentUser.avatarUrl ? (
+                    <img src={currentUser.avatarUrl} alt={currentUser.firstName} className="h-full w-full object-cover" />
+                  ) : (
+                    <span className="text-lg font-bold text-orange-700 uppercase">{currentUser.firstName?.[0]}{currentUser.lastName?.[0]}</span>
+                  )}
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-sm font-bold text-[#001B47] leading-tight">{currentUser.firstName}</span>
+                  <span className="text-[10px] font-bold text-orange-600 uppercase tracking-wider">{currentUser.role}</span>
+                </div>
+                
+                {/* Dropdown Menu */}
+                <div className="absolute right-0 top-[calc(100%+8px)] hidden w-48 rounded-xl border border-gray-100 bg-white p-2 shadow-xl group-hover:block">
+                  <button 
+                    onClick={() => {
+                      logout();
+                      navigate('/');
+                    }}
+                    className="w-full rounded-lg px-4 py-2 text-left text-sm font-bold text-red-600 transition hover:bg-red-50"
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <>
+                <Link to="/sign-in" className="cursor-pointer rounded-full border border-[#001B47]/10 bg-white px-6 py-2 text-xl font-bold text-[#001B47] shadow-sm backdrop-blur transition hover:border-[#001B47]/20 hover:bg-gray-50 hover:-translate-y-0.5">
+                  Sign In
+                </Link>
+                <Link to="/sign-up" className="cursor-pointer rounded-full bg-orange-500 px-6 py-2 text-xl font-bold text-white shadow-lg shadow-orange-500/20 transition hover:bg-orange-600 hover:-translate-y-0.5">
+                  Sign up
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>
