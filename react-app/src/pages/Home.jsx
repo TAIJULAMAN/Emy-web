@@ -1,8 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-
-
-
+import { Link } from 'react-router-dom';
 
 const emyLogo = "https://iqlance-demo.com/design/EMY-Web/img/logo-landing.png";
 const stepOneImg = "https://iqlance-demo.com/design/EMY-Web/img/step-one.png";
@@ -11,10 +8,10 @@ const stepThreeImg = "https://iqlance-demo.com/design/EMY-Web/img/step-three.png
 const heroVideo = "https://iqlance-demo.com/design/EMY-Web/img/reel-placeholder/landingvideo.mp4";
 
 const primaryButton =
-  "inline-flex items-center justify-center cursor-pointer rounded-2xl bg-orange-500 px-8 py-4 text-sm font-black text-white shadow-xl shadow-orange-500/25 transition duration-300 hover:-translate-y-1 hover:bg-orange-600 hover:shadow-orange-500/35 active:translate-y-0";
+  "inline-flex items-center justify-center cursor-pointer rounded-xl bg-orange-500 px-8 py-4 text-base font-black text-white shadow-xl shadow-orange-500/25 transition duration-300 hover:-translate-y-1 hover:bg-orange-600 hover:shadow-orange-500/35 active:translate-y-0";
 
 const secondaryButton =
-  "inline-flex items-center justify-center cursor-pointer rounded-2xl border border-[#001B47]/10 bg-white/80 px-8 py-4 text-sm font-black text-[#001B47] shadow-lg shadow-[#001B47]/5 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-600";
+  "inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#001B47]/10 bg-white/80 px-8 py-4 text-base font-black text-[#001B47] shadow-lg shadow-[#001B47]/5 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-600";
 
 function smoothScroll(target) {
   const element = document.querySelector(target);
@@ -105,62 +102,6 @@ function LineIcon({ type, className = "h-7 w-7" }) {
     <svg {...props}>
       <path d="M12 2l2.8 6 6.2.8-4.6 4.5 1.2 6.4L12 16.5 6.4 19.7l1.2-6.4L3 8.8 9.2 8 12 2z" />
     </svg>
-  );
-}
-
-function Header({
-  onHome = () => window.scrollTo({ top: 0, behavior: "smooth" }),
-  onComingSoon = () => { },
-}) {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return (
-    <header className={`fixed left-0 right-0 top-0 z-50 border-b border-white/40 bg-white/90 backdrop-blur transition-all duration-300 ${scrolled ? "shadow-xl shadow-[#001B47]/8" : "shadow-none"}`}>
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-5">
-        <button type="button" onClick={onHome} className="cursor-pointer" aria-label="Go to homepage">
-          <Logo />
-        </button>
-
-        <div className="hidden items-center gap-2 sm:flex">
-          <button type="button" onClick={onHome} className="cursor-pointer rounded-full px-4 py-2 text-sm font-bold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            Home
-          </button>
-          <button type="button" onClick={() => smoothScroll("#features")} className="cursor-pointer rounded-full px-4 py-2 text-sm font-bold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            About
-          </button>
-          <button type="button" onClick={() => smoothScroll("#business")} className="cursor-pointer rounded-full px-4 py-2 text-sm font-bold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            Business
-          </button>
-
-          <button type="button" onClick={() => smoothScroll("#ask-emy")} className="cursor-pointer rounded-full border border-orange-200 bg-orange-50 px-5 py-2 text-sm font-bold text-orange-600 shadow-sm transition hover:border-orange-300 hover:bg-orange-100 hover:-translate-y-0.5">
-            Ask EMY
-          </button>
-
-          <button type="button" onClick={() => smoothScroll("#contact")} className="cursor-pointer rounded-full px-4 py-2 text-sm font-bold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            Contact
-          </button>
-          <button type="button" onClick={() => smoothScroll("#faqs")} className="cursor-pointer rounded-full px-4 py-2 text-sm font-bold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            FAQs
-          </button>
-
-          <div className="ml-2 flex items-center gap-3 border-l border-[#001B47]/10 pl-4">
-            <button type="button" onClick={() => onComingSoon("Sign In")} className="cursor-pointer rounded-full border border-[#001B47]/10 bg-white px-6 py-2 text-sm font-bold text-[#001B47] shadow-sm backdrop-blur transition hover:border-[#001B47]/20 hover:bg-gray-50 hover:-translate-y-0.5">
-              Sign In
-            </button>
-            <button type="button" onClick={() => onComingSoon("Sign up")} className="cursor-pointer rounded-full bg-orange-500 px-6 py-2 text-sm font-bold text-white shadow-lg shadow-orange-500/20 transition hover:bg-orange-600 hover:-translate-y-0.5">
-              Sign up
-            </button>
-          </div>
-        </div>
-      </div>
-    </header>
   );
 }
 
@@ -261,7 +202,7 @@ function HeroIllustration() {
         className="bottom-20 right-0 z-20 hidden w-[205px] rotate-[10deg] lg:block xl:right-4 xl:w-[235px]"
       />
 
-      <a href="about-ask-emy.html" aria-label="About Ask EMY" className="absolute bottom-8 left-[8%] z-40 hidden max-w-[310px] rotate-[-3deg] rounded-[2rem] border border-white/80 bg-white/95 p-5 text-left shadow-2xl shadow-[#001B47]/10 backdrop-blur-2xl transition hover:-translate-y-1 hover:shadow-orange-200/40 lg:block">
+      <Link to="/ask-emy" aria-label="About Ask EMY" className="absolute bottom-8 left-[8%] z-40 hidden max-w-[310px] rotate-[-3deg] rounded-[2rem] border border-white/80 bg-white/95 p-5 text-left shadow-2xl shadow-[#001B47]/10 backdrop-blur-2xl transition hover:-translate-y-1 hover:shadow-orange-200/40 lg:block">
         <div className="flex items-center gap-4">
           <span className="group relative flex h-20 w-20 shrink-0 items-center justify-center overflow-visible">
             <span className="pointer-events-none absolute bottom-full left-1/2 z-[80] mb-2 w-52 -translate-x-1/2 translate-y-2 rounded-2xl border border-orange-200 bg-white/95 px-3 py-2 text-left text-xs font-bold leading-snug text-[#001B47] opacity-0 shadow-xl shadow-[#001B47]/10 backdrop-blur transition group-hover:translate-y-0 group-hover:opacity-100">Hi, I'm EMY. Click me to find out more about me.</span>
@@ -276,7 +217,7 @@ function HeroIllustration() {
           Ask anything...
           <span className="text-orange-500">→</span>
         </div>
-      </a>
+      </Link>
 
       <div className="absolute bottom-8 right-8 z-40 hidden rounded-full border border-white/80 bg-white/95 px-6 py-4 shadow-xl shadow-orange-200/40 backdrop-blur-xl xl:flex">
         <div className="flex items-center gap-4">
@@ -416,66 +357,28 @@ function StoreButton({ type }) {
 
 function MarqueeStrip() {
   const items = ["Local discovery", "Ask EMY", "Nearby businesses", "Direct messaging", "Smart services", "Community first"];
-  const loop = [...items, ...items];
 
   return (
     <section className="relative overflow-hidden bg-[#fff8ef] py-8">
-      <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,#fff8ef,transparent_16%,transparent_84%,#fff8ef)]" />
-      <div className="flex w-max animate-[marquee_28s_linear_infinite] gap-4">
-        {loop.map((item, index) => (
+      <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(90deg,#fff8ef,transparent_16%,transparent_84%,#fff8ef)]" />
+      <div className="flex w-max animate-[marquee_28s_linear_infinite] gap-4 pr-4">
+        {items.map((item, index) => (
           <div
-            key={`${item}-${index}`}
+            key={index}
             className="flex items-center gap-3 rounded-full border border-white/70 bg-white/75 px-6 py-3 text-sm font-black text-[#001B47] shadow-lg shadow-[#001B47]/5 backdrop-blur-2xl"
           >
-            <span className="h-2.5 w-2.5 rounded-full bg-orange-500" />
-            {item}
+            <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-orange-500" />
+            <span className="whitespace-nowrap">{item}</span>
           </div>
         ))}
       </div>
       <style>{`
         @keyframes marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
+          from { transform: translateX(100vw); }
+          to { transform: translateX(-100%); }
         }
       `}</style>
     </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="relative overflow-hidden bg-[#fff8ef] px-6 py-16" id="contact">
-      <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-orange-300/30 blur-3xl" />
-      <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-[#001B47]/10 blur-3xl" />
-      <div className="relative mx-auto max-w-[1440px] rounded-[2.5rem] border border-white/60 bg-white/75 p-8 shadow-2xl shadow-[#001B47]/5 backdrop-blur-2xl md:p-10">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
-          <div>
-            <Logo />
-            <p className="mt-6 max-w-md text-sm leading-7 text-[#001B47]/65">
-              EMY helps people discover nearby businesses, interact directly, and explore services in their local area.
-              <br />
-              <span className="font-black text-orange-500">We did it for you.</span>
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <span className="rounded-full bg-orange-100 px-4 py-2 text-xs font-black text-orange-500">Local discovery</span>
-              <span className="rounded-full bg-orange-100 px-4 py-2 text-xs font-black text-orange-500">Ask EMY</span>
-              <span className="rounded-full bg-orange-100 px-4 py-2 text-xs font-black text-orange-500">Business support</span>
-            </div>
-          </div>
-          <div>
-            <h3 className="text-sm font-black uppercase tracking-wide text-orange-500">Support</h3>
-            <ul className="mt-5 space-y-3 text-sm font-semibold text-[#001B47]/70">
-              <li><a href="terms.html" className="hover:text-orange-500">Terms of Use</a></li>
-              <li><a href="privacy.html" className="hover:text-orange-500">Privacy Policy</a></li>
-              <li><a href="about.html" className="hover:text-orange-500">About Us</a></li>
-              <li><a href="contact.html" className="hover:text-orange-500">Contact Support</a></li>
-              <li><a href="faqs.html" className="hover:text-orange-500">FAQs</a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="mt-10 border-t border-orange-100 pt-6 text-center text-sm text-[#001B47]/45">© MY-EMY.COM Ltd. All Rights reserved.</div>
-      </div>
-    </footer>
   );
 }
 
@@ -553,19 +456,19 @@ function HomePage() {
           </div>
 
           <div className="absolute inset-x-0 bottom-0 z-0 h-40 bg-gradient-to-b from-transparent to-[#fff8ef]" />
-          <div className="absolute left-[clamp(5rem,12vw,12rem)] top-28 z-10 block rounded-full border border-white/60 bg-white/55 px-5 py-3 text-xs font-black text-[#001B47]/70 shadow-xl shadow-[#001B47]/5 backdrop-blur">
+          <div className="absolute left-[clamp(25rem,12vw,12rem)] top-28 z-10 block rounded-full border border-white/60 bg-white/55 px-5 py-3 text-xl font-semibold text-[#001B47]/70 shadow-xl shadow-[#001B47]/5 backdrop-blur">
             Modern local discovery
           </div>
 
           <div className="relative z-10 mx-auto grid max-w-[1440px] items-center gap-16 lg:grid-cols-[0.95fr_1.05fr]">
             <div className="max-w-2xl">
-              <p className="inline-flex rounded-full border border-white/60 bg-white/70 px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-orange-500 shadow-lg shadow-[#001B47]/5 backdrop-blur">
+              <p className="inline-flex rounded-full border border-white/60 bg-white/70 px-5 py-2 text-xl font-semibold uppercase tracking-[0.22em] text-orange-500 shadow-lg shadow-[#001B47]/5 backdrop-blur">
                 Ask. Discover. Connect.
               </p>
-              <h1 className="mt-7 text-5xl font-black leading-[1.03] tracking-tight text-[#001B47] md:text-7xl">
+              <h1 className="mt-7 text-7xl text-start font-extrabold leading-[1.5] tracking-tight text-[#001B47] md:text-7xl">
                 Find nearby.<br />Ask instantly.<br /><span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Connect locally.</span>
               </h1>
-              <p className="mt-8 max-w-xl text-lg leading-8 text-[#001B47]/65">
+              <p className="mt-8 max-w-xl text-xl leading-8 text-[#001B47]/85">
                 EMY connects people with local businesses in real time. Discover nearby shops, interact directly, and use Ask EMY to find what you need faster.
               </p>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -576,7 +479,7 @@ function HomePage() {
             <HeroIllustration />
           </div>
 
-          <div id="features" className="relative z-10 mx-auto mt-16 max-w-6xl rounded-[2.5rem] border border-white/60 bg-white/75 p-5 shadow-2xl shadow-[#001B47]/10 backdrop-blur-2xl md:mt-0">
+          <div id="features" className="relative z-10 mx-auto mt-[100px] max-w-7xl rounded-[2.5rem] border border-white/60 bg-white/75 p-5 shadow-2xl shadow-[#001B47]/10 backdrop-blur-2xl">
             <div className="grid gap-4 md:grid-cols-4">
               {features.map((feature) => (
                 <div key={feature.title} className="group flex gap-4 rounded-3xl p-4 transition duration-300 hover:-translate-y-1 hover:bg-orange-50 hover:shadow-lg hover:shadow-orange-900/5">
@@ -584,7 +487,7 @@ function HomePage() {
                     <LineIcon type={feature.type} />
                   </div>
                   <div>
-                    <h3 className="font-black text-[#001B47]">{feature.title}</h3>
+                    <h3 className="text-xl font-bold text-[#001B47]">{feature.title}</h3>
                     <p className="mt-1 text-sm leading-6 text-[#001B47]/55">{feature.desc}</p>
                   </div>
                 </div>
@@ -600,11 +503,11 @@ function HomePage() {
           <div className="absolute inset-0 opacity-20 bg-[linear-gradient(90deg,rgba(249,115,22,0.12)_1px,transparent_1px),linear-gradient(0deg,rgba(249,115,22,0.10)_1px,transparent_1px)] bg-[size:46px_46px]" />
 
           <div className="relative mx-auto max-w-6xl">
-            <p className="inline-flex rounded-full border border-white/60 bg-white/80 px-6 py-3 text-lg font-black text-[#001B47] shadow-lg shadow-[#001B47]/5 backdrop-blur transition duration-500 hover:-translate-y-1 hover:text-orange-600 hover:shadow-xl">
+            <p className="inline-flex rounded-full border border-white/60 bg-white/80 px-6 py-3 text-xl font-semi text-[#001B47] shadow-lg shadow-[#001B47]/5 backdrop-blur transition duration-500 hover:-translate-y-1 hover:text-orange-600 hover:shadow-xl">
               Trusted by local businesses and loved by customers
             </p>
 
-            <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-4">
+            <div className="mx-auto mt-12 grid max-w-7xl gap-6 md:grid-cols-4">
               {stats.map((stat, index) => (
                 <div
                   key={stat.label}
@@ -642,20 +545,20 @@ function HomePage() {
 
         <MarqueeStrip />
 
-        <section className="bg-white px-6 pb-24 pt-4">
+        <section className="bg-white px-6 pb-24 pt-20">
           <div className="mx-auto max-w-[1440px]">
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-orange-500">EMY ecosystem</p>
+            <div className="mx-auto max-w-4xl text-center">
+              <p className="text-3xl font-bold uppercase tracking-[0.22em] text-orange-500">EMY ecosystem</p>
               <h2 className="mt-3 text-4xl font-black text-[#001B47]">How EMY works</h2>
-              <p className="mt-5 text-lg leading-8 text-[#001B47]/65">See how people discover businesses, how businesses connect with customers, and how Ask EMY helps along the way.</p>
+              <p className="mt-5 text-xl font-semibold leading-8 text-[#001B47]/65">See how people discover businesses, how businesses connect with customers, and how Ask EMY helps along the way.</p>
             </div>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {ecosystemCards.map((card) => (
                 <div key={card.title} className="group rounded-[2.5rem] border border-orange-100 bg-[#fffaf5] p-4 shadow-xl shadow-[#001B47]/5 transition duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#001B47]/10">
                   <RealisticCardImage card={card} />
                   <div className="p-4">
-                    <p className="text-sm font-black uppercase tracking-wide text-orange-500">{card.title}</p>
-                    <h3 className="mt-2 text-xl font-black text-[#001B47]">{card.subtitle}</h3>
+                    <p className="text-sm font-bold uppercase tracking-wide text-orange-500">{card.title}</p>
+                    <h3 className="mt-2 text-xl font-semibold text-[#001B47]">{card.subtitle}</h3>
                     <p className="mt-3 text-sm leading-7 text-[#001B47]/60">{card.text}</p>
                   </div>
                 </div>
@@ -665,9 +568,9 @@ function HomePage() {
         </section>
 
         <section id="business" className="bg-white px-6 py-20 text-center">
-          <div className="mx-auto max-w-4xl rounded-[2.5rem] border border-orange-100 bg-gradient-to-br from-[#fff8ef] to-white p-8 shadow-2xl shadow-[#001B47]/5 md:p-12">
-            <h2 className="text-4xl font-black text-[#001B47]">Built for customers and small businesses</h2>
-            <p className="mt-5 text-lg leading-8 text-[#001B47]/65">
+          <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-orange-100 bg-gradient-to-br from-[#fff8ef] to-white p-8 shadow-2xl shadow-[#001B47]/5 md:p-12">
+            <h2 className="text-4xl font-bold text-[#001B47]">Built for customers and small businesses</h2>
+            <p className="mt-5 max-w-4xl mx-auto text-xl font-semibold leading-8 text-[#001B47]/65">
               Customers can discover and interact with businesses around them. Businesses can reach local customers, understand what they like, communicate directly, and find services from other providers on EMY.
             </p>
             <div className="mt-10 grid grid-cols-2 gap-6 md:grid-cols-4">
@@ -680,7 +583,7 @@ function HomePage() {
                 </div>
               ))}
             </div>
-            <p className="mt-6 text-sm font-semibold text-[#001B47]/50">Explore services available through EMY</p>
+            <p className="mt-6 text-xl font-semibold text-[#001B47]/50">Explore services available through EMY</p>
             <button type="button" onClick={() => setIsDownloadOpen(true)} className={primaryButton + " mt-8"}>Businesses: find out more</button>
           </div>
         </section>
@@ -690,10 +593,10 @@ function HomePage() {
           <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_30%,white,transparent_40%)]" />
           <div className="absolute -bottom-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-orange-400/30 blur-3xl" />
           <div className="relative mx-auto max-w-4xl text-center">
-            <p className="text-sm font-black uppercase tracking-[0.22em] text-orange-100">Get the app</p>
+            <p className="text-xl font-bold uppercase tracking-[0.22em] text-orange-100">Get the app</p>
             <h2 className="mt-3 text-4xl font-black leading-tight md:text-5xl">We did it for you.</h2>
-            <p className="mt-5 text-lg text-white/75">Discover nearby businesses, connect directly, and access services all from your phone.</p>
-            <button type="button" onClick={() => setIsDownloadOpen(true)} className="mt-10 inline-flex cursor-pointer items-center justify-center rounded-2xl bg-white px-8 py-4 text-sm font-black text-[#001B47] shadow-xl shadow-[#001B47]/20 transition hover:-translate-y-1 hover:bg-orange-50 hover:text-orange-600">
+            <p className="mt-5 text-2xl font-semibold text-white/75">Discover nearby businesses, connect directly, and access services all from your phone.</p>
+            <button type="button" onClick={() => setIsDownloadOpen(true)} className="mt-10 inline-flex cursor-pointer items-center justify-center rounded-2xl bg-white px-8 py-4 text-xl font-black text-[#001B47] shadow-xl shadow-[#001B47]/20 transition hover:-translate-y-1 hover:bg-orange-50 hover:text-orange-600">
               Download the app
             </button>
           </div>
@@ -705,17 +608,6 @@ function HomePage() {
       </main>
     </div>
   );
-}
-
-function EMYHomepage() {
-  return <HomePage />;
-}
-
-function __LinkedEMYPage() {
-  React.useEffect(() => {
-    __linkEMYPages();
-  }, []);
-  return <EMYHomepage />;
 }
 
 export default function Home() {

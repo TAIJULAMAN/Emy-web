@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './AskEmy.css';
 
 export default function AskEmy() {
-  const navigate = useNavigate();
 
   return (
     <>
@@ -11,7 +10,7 @@ export default function AskEmy() {
         <div className="blob one" aria-hidden="true"></div>
         <div className="blob two" aria-hidden="true"></div>
         <div className="blob three" aria-hidden="true"></div>
-        <header className="topbar">
+        {/* <header className="topbar">
           <a className="brand" href="index.html" aria-label="EMY home">
             <img src="https://iqlance-demo.com/design/EMY-Web/img/logo-landing.png" alt="EMY" />
           </a>
@@ -21,7 +20,7 @@ export default function AskEmy() {
             <a className="soft" href="emy-signin.html">Sign In</a>
             <a className="primary" href="emy-signup.html">Sign up</a>
           </nav>
-        </header>
+        </header> */}
         <main className="about-main">
           <section className="center" aria-label="About Ask EMY">
             <div className="hero-stage">
@@ -62,13 +61,13 @@ export default function AskEmy() {
                   <img src="https://iqlance-demo.com/design/EMY-Web/img/logo-landing.png" alt="EMY" />
                   <span className="bag" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M6.9 8.1c.35-1.08 1.36-1.8 2.5-1.8h5.2c1.14 0 2.15.72 2.5 1.8l1.7 8.7c.35 1.78-1.01 3.45-2.82 3.45H8.02c-1.81 0-3.17-1.67-2.82-3.45l1.7-8.7Z" fill="#f76512" stroke="#cf5200" strokeLinejoin="round" strokeWidth="1"/>
-                      <path d="M15.9 6.55c.58.35 1.02.9 1.2 1.55l1.7 8.7c.29 1.48-.6 2.88-1.96 3.32l-.98-.08c.74-.62 1.04-1.6.82-2.72l-1.25-6.7c-.28-1.5-.1-2.8.47-4.07Z" fill="#ad3e00" opacity=".2"/>
-                      <path d="M6.35 10.05c2.15.62 4.02.48 5.66-.3 1.78-.85 3.62-.92 5.46-.22l.38 1.84c-2.32-.78-4.28-.63-6.04.22-1.62.78-3.45.9-5.78.28l.32-1.82Z" fill="#ffb067" opacity=".34"/>
-                      <path d="M8.8 6.35c.32-1.92 1.42-3 3.2-3s2.88 1.08 3.2 3" stroke="#fff" strokeLinecap="round" strokeWidth="1.18" opacity=".9"/>
-                      <path d="M9.25 13.2c.46-.36.92-.36 1.38 0" stroke="#fff" strokeLinecap="round" strokeWidth="1.02" opacity=".96"/>
-                      <path d="M13.37 13.2c.46-.36.92-.36 1.38 0" stroke="#fff" strokeLinecap="round" strokeWidth="1.02" opacity=".96"/>
-                      <path d="M9.8 15.82c1.34.94 3.06.94 4.4 0" stroke="#fff" strokeLinecap="round" strokeWidth="1.18" opacity=".96"/>
+                      <path d="M6.9 8.1c.35-1.08 1.36-1.8 2.5-1.8h5.2c1.14 0 2.15.72 2.5 1.8l1.7 8.7c.35 1.78-1.01 3.45-2.82 3.45H8.02c-1.81 0-3.17-1.67-2.82-3.45l1.7-8.7Z" fill="#f76512" stroke="#cf5200" strokeLinejoin="round" strokeWidth="1" />
+                      <path d="M15.9 6.55c.58.35 1.02.9 1.2 1.55l1.7 8.7c.29 1.48-.6 2.88-1.96 3.32l-.98-.08c.74-.62 1.04-1.6.82-2.72l-1.25-6.7c-.28-1.5-.1-2.8.47-4.07Z" fill="#ad3e00" opacity=".2" />
+                      <path d="M6.35 10.05c2.15.62 4.02.48 5.66-.3 1.78-.85 3.62-.92 5.46-.22l.38 1.84c-2.32-.78-4.28-.63-6.04.22-1.62.78-3.45.9-5.78.28l.32-1.82Z" fill="#ffb067" opacity=".34" />
+                      <path d="M8.8 6.35c.32-1.92 1.42-3 3.2-3s2.88 1.08 3.2 3" stroke="#fff" strokeLinecap="round" strokeWidth="1.18" opacity=".9" />
+                      <path d="M9.25 13.2c.46-.36.92-.36 1.38 0" stroke="#fff" strokeLinecap="round" strokeWidth="1.02" opacity=".96" />
+                      <path d="M13.37 13.2c.46-.36.92-.36 1.38 0" stroke="#fff" strokeLinecap="round" strokeWidth="1.02" opacity=".96" />
+                      <path d="M9.8 15.82c1.34.94 3.06.94 4.4 0" stroke="#fff" strokeLinecap="round" strokeWidth="1.18" opacity=".96" />
                     </svg>
                   </span>
                 </div>
@@ -80,8 +79,8 @@ export default function AskEmy() {
             <div className="answer-box">
               <span className="answer-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
-                  <path d="M5 12.5c0-3.6 2.95-6.5 7-6.5s7 2.9 7 6.5-2.95 6.5-7 6.5c-.72 0-1.4-.1-2.03-.29L6 20l1.28-3.03A6.17 6.17 0 0 1 5 12.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
-                  <path d="M9 12h6M9 15h3.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                  <path d="M5 12.5c0-3.6 2.95-6.5 7-6.5s7 2.9 7 6.5-2.95 6.5-7 6.5c-.72 0-1.4-.1-2.03-.29L6 20l1.28-3.03A6.17 6.17 0 0 1 5 12.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+                  <path d="M9 12h6M9 15h3.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
                 </svg>
               </span>
               <span className="answer-copy">
@@ -145,7 +144,7 @@ export default function AskEmy() {
                 </article>
               </div>
             </section>
-            <p className="terms">Ask EMY follows the same EMY experience. <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</p>
+            <p className="text-xl font-semibold text-start terms">Ask EMY follows the same EMY experience. <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</p>
           </section>
         </main>
       </div>

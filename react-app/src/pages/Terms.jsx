@@ -19,36 +19,6 @@ function Logo() {
   return <img src={emyLogo} alt="EMY" className="h-12 w-auto object-contain" />;
 }
 
-function Header() {
-  return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/50 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-5">
-        <a href="index.html" aria-label="Go to homepage">
-          <Logo />
-        </a>
-
-        <nav className="hidden items-center gap-3 sm:flex" aria-label="Main navigation">
-          <a href="index.html" className="rounded-full px-5 py-2 text-sm font-bold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            Home
-          </a>
-          <a href="about.html" className="rounded-full px-5 py-2 text-sm font-bold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            About
-          </a>
-          <a href="contact.html" className="rounded-full px-5 py-2 text-sm font-bold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            Contact
-          </a>
-          <a href="#login" className="rounded-full border border-[#001B47]/10 bg-white/80 px-6 py-2 text-sm font-bold text-[#001B47] shadow-sm backdrop-blur transition hover:border-orange-200 hover:bg-orange-50 hover:text-orange-600">
-            Sign In
-          </a>
-          <a href="#signup" className="rounded-full bg-orange-500 px-6 py-2 text-sm font-bold text-white shadow-lg shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-orange-600">
-            Sign up
-          </a>
-        </nav>
-      </div>
-    </header>
-  );
-}
-
 function smoothScroll(target) {
   const element = document.querySelector(target);
   if (element) {
@@ -82,47 +52,6 @@ function FloatingMenu() {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="relative overflow-hidden bg-[#fff7ef] px-6 py-16">
-      <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-orange-300/30 blur-3xl" />
-      <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-orange-500/20 blur-3xl" />
-
-      <div className="relative mx-auto max-w-[1440px] rounded-[2rem] border border-white/60 bg-white/80 p-8 shadow-2xl shadow-[#001B47]/5 backdrop-blur-xl md:p-10">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
-          <div>
-            <Logo />
-            <p className="mt-6 max-w-md text-sm leading-7 text-[#001B47]/70">
-              EMY helps people discover nearby businesses, interact directly, and explore services in their local area.
-              <br />
-              <span className="font-semibold text-orange-500">We did it for you.</span>
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <span className="rounded-full bg-orange-100 px-4 py-2 text-xs font-bold text-orange-500">Local discovery</span>
-              <span className="rounded-full bg-orange-100 px-4 py-2 text-xs font-bold text-orange-500">Ask EMY</span>
-              <span className="rounded-full bg-orange-100 px-4 py-2 text-xs font-bold text-orange-500">Business support</span>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-black uppercase tracking-wide text-[#001B47]">Support</h3>
-            <ul className="mt-5 space-y-3 text-sm text-[#001B47]/70">
-              <li><a href="terms.html" className="font-bold text-orange-500">Terms of Use</a></li>
-              <li><a href="privacy.html" className="hover:text-orange-500">Privacy Policy</a></li>
-              <li><a href="about.html" className="hover:text-orange-500">About Us</a></li>
-              <li><a href="contact.html" className="hover:text-orange-500">Contact Support</a></li>
-              <li><a href="faqs.html" className="hover:text-orange-500">FAQs</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-10 border-t border-orange-100 pt-6 text-center text-sm text-[#001B47]/55">
-          © MY-EMY.COM Ltd. All Rights reserved.
-        </div>
-      </div>
-    </footer>
-  );
-}
 
 const termsSections = [
   {
@@ -242,7 +171,7 @@ function EMYTermsPage() {
   return (
     <div className="min-h-screen bg-[#fff8ef] text-[#001B47] antialiased" style={{ fontFamily: "'Inter', sans-serif" }}>
       <style>{""}</style>
-      
+
       <FloatingMenu />
 
       <main>
@@ -252,10 +181,10 @@ function EMYTermsPage() {
 
           <div className="mx-auto grid max-w-[1440px] items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <p className="inline-flex rounded-full border border-white/60 bg-white/75 px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-orange-500 shadow-lg shadow-[#001B47]/5 backdrop-blur">
+              <p className="inline-flex rounded-full border border-white/60 bg-white/75 px-5 py-2 text-xl font-semibold uppercase tracking-[0.22em] text-orange-500 shadow-lg shadow-[#001B47]/5 backdrop-blur">
                 Legal Information
               </p>
-              <h1 className="mt-7 max-w-2xl text-5xl font-black leading-[1.03] tracking-tight text-[#001B47] md:text-7xl">
+              <h1 className="mt-7 max-w-2xl text-5xl text-start font-black leading-[1.03] tracking-tight text-[#001B47] md:text-7xl">
                 Terms of Use
               </h1>
               <p className="mt-8 max-w-xl text-lg leading-8 text-[#001B47]/65">
@@ -303,12 +232,12 @@ function EMYTermsPage() {
             <h2 className="mt-3 text-4xl font-black leading-tight md:text-5xl">Questions about using EMY?</h2>
             <p className="mt-5 text-lg text-white/75">Contact us and we will help point you in the right direction.</p>
             <a href="contact.html" className="mt-8 inline-flex rounded-2xl bg-orange-500 px-8 py-4 text-sm font-black text-white shadow-xl shadow-orange-500/25 transition hover:-translate-y-1 hover:bg-orange-600">
-              Contact support 
+              Contact support
             </a>
           </div>
         </section>
 
-        
+
       </main>
     </div>
   );

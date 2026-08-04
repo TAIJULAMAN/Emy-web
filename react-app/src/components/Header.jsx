@@ -31,6 +31,21 @@ export default function Header() {
     }
   };
 
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Business', path: '/business' }
+  ];
+
+  const secondaryLinks = [
+    { name: 'Contact', path: '/contact' },
+    { name: 'FAQs', path: '/faqs' }
+  ];
+
+  const baseLinkClass = "cursor-pointer rounded-full px-4 py-2 text-xl font-bold transition hover:bg-orange-50 hover:text-orange-600";
+  const activeClass = "bg-orange-50 text-orange-600";
+  const inactiveClass = "text-[#001B47]";
+
   return (
     <header className={`fixed left-0 right-0 top-0 z-50 border-b border-white/40 bg-white/90 backdrop-blur transition-all duration-300 ${scrolled ? "shadow-xl shadow-[#001B47]/8" : "shadow-none"}`}>
       <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5">
@@ -39,26 +54,30 @@ export default function Header() {
         </Link>
 
         <div className="hidden items-center gap-2 sm:flex">
-          <Link to="/" onClick={() => window.scrollTo(0, 0)} className="cursor-pointer rounded-full px-4 py-2 text-xl font-bold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            Home
-          </Link>
-          <Link to="/about" className="cursor-pointer rounded-full px-4 py-2 text-xl font-bold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            About
-          </Link>
-          <Link to="/business" className="cursor-pointer rounded-full px-4 py-2 text-xl font-bold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            Business
-          </Link>
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              onClick={() => window.scrollTo(0, 0)}
+              className={`${baseLinkClass} ${location.pathname === link.path ? activeClass : inactiveClass}`}
+            >
+              {link.name}
+            </Link>
+          ))}
 
-          <Link to="/ask-emy" className="cursor-pointer rounded-full border border-orange-200 bg-orange-50 px-5 py-2 text-xl font-bold text-orange-600 shadow-sm transition hover:border-orange-300 hover:bg-orange-100 hover:-translate-y-0.5">
+          <Link to="/ask-emy" className={`cursor-pointer rounded-full border px-5 py-2 text-xl font-bold shadow-sm transition hover:-translate-y-0.5 ${location.pathname === '/ask-emy' ? 'border-orange-300 bg-orange-100 text-orange-700' : 'border-orange-200 bg-orange-50 text-orange-600 hover:border-orange-300 hover:bg-orange-100'}`}>
             Ask EMY
           </Link>
 
-          <Link to="/contact" className="cursor-pointer rounded-full px-4 py-2 text-xl font-bold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            Contact
-          </Link>
-          <Link to="/faqs" className="cursor-pointer rounded-full px-4 py-2 text-xl font-bold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            FAQs
-          </Link>
+          {secondaryLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className={`${baseLinkClass} ${location.pathname === link.path ? activeClass : inactiveClass}`}
+            >
+              {link.name}
+            </Link>
+          ))}
 
           <div className="ml-2 flex items-center gap-3 border-l border-[#001B47]/10 pl-4">
             <Link to="/sign-in" className="cursor-pointer rounded-full border border-[#001B47]/10 bg-white px-6 py-2 text-xl font-bold text-[#001B47] shadow-sm backdrop-blur transition hover:border-[#001B47]/20 hover:bg-gray-50 hover:-translate-y-0.5">

@@ -1,17 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
-
-
-
-
-
-
-
-
 const emyLogo = "https://iqlance-demo.com/design/EMY-Web/img/logo-landing.png";
 const videoUrl = "https://iqlance-demo.com/design/EMY-Web/img/reel-placeholder/landingvideo.mp4";
 
-const imageFor = (query) => `https://source.unsplash.com/900x700/?${encodeURIComponent(query)}`;
 
 const heroShopImages = [
   "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1400&q=90",
@@ -207,45 +198,6 @@ function StepIcon({ type }) {
   );
 }
 
-function Header() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return (
-    <header className={`fixed left-0 right-0 top-0 z-50 border-b border-white/40 bg-white/75 backdrop-blur-xl transition-all duration-300 ${scrolled ? "shadow-lg shadow-[#001B47]/10" : "shadow-none"}`}>
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-6">
-        <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="cursor-pointer" aria-label="Go to top">
-          <Logo />
-        </button>
-
-        <nav className="hidden items-center gap-3 sm:flex" aria-label="Main navigation">
-          <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="cursor-pointer rounded-full px-5 py-2 text-sm font-semibold text-orange-600 transition hover:bg-orange-50">
-            Home
-          </button>
-          <button type="button" onClick={() => smoothScroll("#gateway")} className="cursor-pointer rounded-full px-5 py-2 text-sm font-semibold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            About
-          </button>
-          <a href="#contact" className="cursor-pointer rounded-full px-5 py-2 text-sm font-semibold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            Contact
-          </a>
-          <a href="#login" className="cursor-pointer rounded-full border border-orange-200 bg-white/80 px-6 py-2 text-sm font-semibold text-[#001B47] shadow-sm transition hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600">
-            Sign In
-          </a>
-          <a href="#signup" className="cursor-pointer rounded-full bg-orange-600 px-6 py-2 text-sm font-semibold text-white shadow-lg shadow-orange-600/20 transition hover:bg-orange-700">
-            Sign up
-          </a>
-        </nav>
-      </div>
-    </header>
-  );
-}
-
 function Hero() {
   const [bgIndex, setBgIndex] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
@@ -296,8 +248,8 @@ function Hero() {
 
       <div className="mx-auto grid max-w-[1440px] items-center gap-12 lg:grid-cols-[0.62fr_0.38fr]">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/50 bg-white px-6 py-2 text-sm font-bold text-[#001B47] shadow-lg">Built for small businesses</span>
-          <h1 className="mt-8 max-w-4xl text-4xl font-bold leading-[1.22] tracking-normal text-white md:text-6xl">Connect your business<br />with essential services<br />— fast.</h1>
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/50 bg-white px-6 py-2 text-xl font-semibold text-[#001B47] shadow-lg">Built for small businesses</span>
+          <h1 className="mt-8 max-w-4xl text-5xl font-extrabold text-start leading-[1.22] tracking-normal text-white md:text-6xl">Connect your business<br />with essential services<br />— fast.</h1>
           <p className="mt-8 max-w-3xl text-base font-semibold leading-8 text-white md:text-lg">EMY helps small businesses discover trusted providers for logistics, suppliers, legal support, financial advice, IT solutions, and more — all in one place.</p>
           <div className="mt-16 grid max-w-4xl gap-5 sm:grid-cols-2">
             {[["Trusted network", "Verified providers"], ["Smart matching", "Recommendations that fit"], ["Simple onboarding", "Start in minutes"]].map(([title, text], i) => (
@@ -377,14 +329,14 @@ function Gateway() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#fff7ef] via-white to-[#eef4ff]" />
       <div className="mx-auto max-w-[1440px]">
         <div className="mt-8">
-          <h2 className="text-4xl font-black text-[#001B47] md:text-6xl">Your Gateway to Trusted Business Services</h2>
+          <h2 className="text-4xl font-extrabold text-[#001B47] md:text-6xl">Your Gateway to Trusted Business Services</h2>
           <p className="mt-4 max-w-xl text-lg text-neutral-600">Find the right partners faster — a platform designed for real small business needs.</p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {cards.map((card) => (
             <div key={card.title} className="rounded-2xl border border-orange-100 bg-white p-6 shadow-xl shadow-orange-950/5">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 text-orange-500"><Icon type={card.icon} /></div>
-              <h3 className="mt-4 text-lg font-bold text-[#001B47]">{card.title}</h3>
+              <h3 className="mt-4 text-xl font-bold text-[#001B47]">{card.title}</h3>
               <p className="mt-2 text-sm text-neutral-600">{card.text}</p>
             </div>
           ))}
@@ -656,43 +608,6 @@ function SideNav() {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="relative overflow-hidden bg-[#fff7ef] px-6 py-16" id="contact">
-      <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-orange-300/30 blur-3xl" />
-      <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-orange-500/20 blur-3xl" />
-      <div className="relative mx-auto max-w-[1440px] rounded-[2rem] border border-white/60 bg-white/80 p-8 shadow-2xl shadow-[#001B47]/5 backdrop-blur-xl md:p-10">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
-          <div>
-            <Logo />
-            <p className="mt-6 max-w-md text-sm leading-7 text-[#001B47]/70">
-              EMY helps people discover nearby businesses, interact directly, and explore services in their local area.
-              <br />
-              <span className="font-semibold text-orange-500">We did it for you.</span>
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <span className="rounded-full bg-orange-100 px-4 py-2 text-xs font-bold text-orange-500">Local discovery</span>
-              <span className="rounded-full bg-orange-100 px-4 py-2 text-xs font-bold text-orange-500">Ask EMY</span>
-              <span className="rounded-full bg-orange-100 px-4 py-2 text-xs font-bold text-orange-500">Business support</span>
-            </div>
-          </div>
-          <div>
-            <h3 className="text-sm font-black uppercase tracking-wide text-[#001B47]">Support</h3>
-            <ul className="mt-5 space-y-3 text-sm text-[#001B47]/70">
-              <li><a href="terms.html" className="hover:text-orange-500">Terms of Use</a></li>
-              <li><a href="privacy.html" className="hover:text-orange-500">Privacy Policy</a></li>
-              <li><a href="#gateway" className="hover:text-orange-500">About Us</a></li>
-              <li><a href="#contact" className="hover:text-orange-500">Contact Support</a></li>
-              <li><a href="faqs.html" className="hover:text-orange-500">FAQs</a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="mt-10 border-t border-orange-100 pt-6 text-center text-sm text-[#001B47]/55">© MY-EMY.COM Ltd. All Rights reserved.</div>
-      </div>
-    </footer>
-  );
-}
-
 function EMYPage() {
   return (
     <div className="emy-page min-h-screen bg-white text-neutral-950">
@@ -709,7 +624,7 @@ function EMYPage() {
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
-      
+
       <SideNav />
       <main>
         <Hero />
@@ -721,7 +636,7 @@ function EMYPage() {
         <IndustrySection />
         <TrustedNetwork />
       </main>
-      
+
     </div>
   );
 }

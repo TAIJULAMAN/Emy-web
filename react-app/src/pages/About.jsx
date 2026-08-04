@@ -1,20 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
-
-
-
-
-
-
-
-
 const FOUNDER_IMAGE_URL = "https://iqlance-demo.com/design/EMY-Web/img/aboutus/isaac_stephane.jpg";
-const emyLogo = "https://iqlance-demo.com/design/EMY-Web/img/logo-landing.png";
-const EMY_NAVY = "#001B47";
 
-function Logo() {
-  return <img src={emyLogo} alt="EMY" className="h-12 w-auto object-contain" />;
-}
 
 function smoothScroll(target) {
   const element = document.querySelector(target);
@@ -71,44 +58,6 @@ function LineIcon({ type, className = "h-7 w-7" }) {
   );
 }
 
-function Header() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return (
-    <header className={`fixed left-0 right-0 top-0 z-50 border-b border-white/40 bg-white/75 backdrop-blur-xl transition-all duration-300 ${scrolled ? "shadow-lg shadow-[#001B47]/10" : "shadow-none"}`}> 
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-6">
-        <button type="button" onClick={() => smoothScroll("#about-hero")} className="cursor-pointer" aria-label="Go to top">
-          <Logo />
-        </button>
-
-        <nav className="hidden items-center gap-3 sm:flex" aria-label="Main navigation">
-          <button type="button" onClick={() => smoothScroll("#about-hero")} className="cursor-pointer rounded-full px-5 py-2 text-sm font-semibold text-orange-600 transition hover:bg-orange-50">
-            Home
-          </button>
-          <button type="button" onClick={() => smoothScroll("#about-world")} className="cursor-pointer rounded-full px-5 py-2 text-sm font-semibold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            About
-          </button>
-          <a href="#contact" className="cursor-pointer rounded-full px-5 py-2 text-sm font-semibold text-[#001B47] transition hover:bg-orange-50 hover:text-orange-600">
-            Contact
-          </a>
-          <a href="#login" className="cursor-pointer rounded-full border border-orange-200 bg-white/80 px-6 py-2 text-sm font-semibold text-[#001B47] shadow-sm transition hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600">
-            Sign In
-          </a>
-          <a href="#signup" className="cursor-pointer rounded-full bg-orange-600 px-6 py-2 text-sm font-semibold text-white shadow-lg shadow-orange-600/20 transition hover:bg-orange-700">
-            Sign up
-          </a>
-        </nav>
-      </div>
-    </header>
-  );
-}
 
 function FloatingMenu() {
   const items = useMemo(
@@ -215,7 +164,7 @@ function StorySection({ id, title, text, image, accent, reverse = false, bullets
           </div>
 
           <div className={reverse ? "md:order-1" : ""}>
-            <p className="text-sm font-black uppercase tracking-wide text-orange-500">About EMY</p>
+            <p className="text-xl font-semibold uppercase tracking-wide text-orange-500">About EMY</p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#001B47] md:text-5xl">{title}</h2>
             <p className="mt-5 max-w-lg text-base leading-8 text-[#001B47]/70">{text}</p>
 
@@ -226,7 +175,7 @@ function StorySection({ id, title, text, image, accent, reverse = false, bullets
                     <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange-100 text-xs font-black text-orange-600">
                       {index + 1}
                     </span>
-                    <p className="text-sm font-semibold leading-7 text-[#001B47]">{bullet}</p>
+                    <p className="text-lg font-medium leading-7 text-[#001B47]">{bullet}</p>
                   </div>
                 ))}
               </div>
@@ -274,46 +223,6 @@ function FounderSection() {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="relative overflow-hidden bg-[#fff7ef] px-6 py-16" id="contact">
-      <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-orange-300/30 blur-3xl" />
-      <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-orange-500/20 blur-3xl" />
-      <div className="relative mx-auto max-w-[1440px] rounded-[2rem] border border-white/60 bg-white/80 p-8 shadow-2xl backdrop-blur-xl shadow-[#001B47]/5 backdrop-blur md:p-10">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
-          <div>
-            <Logo />
-            <p className="mt-6 max-w-md text-sm leading-7 text-[#001B47]/70">
-              EMY helps people discover nearby businesses, interact directly, and explore services in their local area.
-              <br />
-              <span className="font-semibold text-orange-500">We did it for you.</span>
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <span className="rounded-full bg-orange-100 px-4 py-2 text-xs font-bold text-orange-500">Local discovery</span>
-              <span className="rounded-full bg-orange-100 px-4 py-2 text-xs font-bold text-orange-500">Ask EMY</span>
-              <span className="rounded-full bg-orange-100 px-4 py-2 text-xs font-bold text-orange-500">Business support</span>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-black uppercase tracking-wide text-[#001B47]">Support</h3>
-            <ul className="mt-5 space-y-3 text-sm text-[#001B47]/70">
-              <li><a href="terms.html" className="hover:text-orange-500">Terms of Use</a></li>
-              <li><a href="privacy.html" className="hover:text-orange-500">Privacy Policy</a></li>
-              <li><a href="#about-world" className="hover:text-orange-500">About Us</a></li>
-              <li><a href="#contact" className="hover:text-orange-500">Contact Support</a></li>
-              <li><a href="faqs.html" className="hover:text-orange-500">FAQs</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-10 border-t border-orange-100 pt-6 text-center text-sm text-[#001B47]/55">
-          © MY-EMY.COM Ltd. All Rights reserved.
-        </div>
-      </div>
-    </footer>
-  );
-}
 
 function AboutPageOnly() {
   const heroImages = useMemo(
@@ -384,7 +293,7 @@ function AboutPageOnly() {
   return (
     <div className="min-h-screen bg-[#fff7ef] font-['Public_Sans',sans-serif] text-[#001B47]">
       <style>{``}</style>
-      
+
       <FloatingMenu />
 
       <main className="pt-28">
@@ -394,11 +303,11 @@ function AboutPageOnly() {
 
           <div className="mx-auto grid max-w-[1440px] items-center gap-14 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <p className="text-sm font-black uppercase tracking-wide text-orange-500">About EMY</p>
-              <h1 className="mt-5 text-5xl font-black leading-tight tracking-tight md:text-7xl">
+              <p className="text-2xl font-bold uppercase tracking-wide text-orange-500">About EMY</p>
+              <h1 className="mt-5 text-6xl font-bold text-start leading-tight tracking-tight md:text-7xl">
                 Business connection for the local world.
               </h1>
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-[#001B47]/70">
+              <p className="mt-7 max-w-2xl text-lg font-semibold leading-8 text-[#001B47]/70">
                 EMY is creating a smarter ecosystem where customers discover nearby businesses, businesses connect with customers, and service providers become easier to reach.
               </p>
             </div>
@@ -438,8 +347,8 @@ function AboutPageOnly() {
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-100 text-orange-500 transition group-hover:bg-orange-500 group-hover:text-white">
                     <LineIcon type={type} />
                   </div>
-                  <h3 className="mt-5 text-lg font-black">{title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-[#001B47]/70">{text}</p>
+                  <h3 className="mt-5 text-2xl font-semibold">{title}</h3>
+                  <p className="mt-2 text-lg font-medium leading-6 text-[#001B47]/70">{text}</p>
                 </div>
               </div>
             ))}
@@ -451,7 +360,7 @@ function AboutPageOnly() {
         ))}
 
         <FounderSection />
-        
+
       </main>
     </div>
   );
