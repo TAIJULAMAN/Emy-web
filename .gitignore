@@ -12,3 +12,6 @@ tmp*
 *.bak
 *.tmp
 generate-log.txt
+
+# Local Netlify folder
+.netlify

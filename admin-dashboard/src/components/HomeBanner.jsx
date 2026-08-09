@@ -1,0 +1,252 @@
+import React from 'react';
+
+export default function HomeBanner() {
+  return (
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 pb-10">
+      
+      {/* Repeated top section */}
+      <div className="border border-orange-brand/20 rounded-[12px] bg-[#fff7ed] text-[#7a3b00] p-[13px_14px] mb-[14px] text-[13px] leading-[1.45] font-bold">
+        This admin page reads the same browser data saved by EMY sign up, business profile, products, posts, notifications, Ask EMY, and customer actions. It does not pretend disconnected setup sections are working.
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_170px_auto] gap-[10px] mb-[14px]">
+        <input 
+          className="w-full border border-line rounded-[10px] bg-white text-navy outline-none p-[10px_11px] text-[13px] font-semibold focus:border-orange-brand/50 focus:ring-2 focus:ring-orange-brand/20 transition-all" 
+          placeholder="Search connected records..." 
+        />
+        <select className="w-full border border-line rounded-[10px] bg-white text-navy outline-none p-[10px_11px] text-[13px] font-semibold appearance-none cursor-pointer focus:border-orange-brand/50 focus:ring-2 focus:ring-orange-brand/20 transition-all">
+          <option value="">All statuses</option>
+          <option>pending</option>
+          <option>approved</option>
+          <option>active</option>
+          <option>reported</option>
+          <option>draft</option>
+        </select>
+        <button className="min-h-[34px] h-[36px] rounded-[999px] border border-line bg-white text-navy inline-flex items-center justify-center px-[12px] text-[12px] font-extrabold hover:bg-slate-50 transition-colors self-end md:self-auto">
+          Refresh
+        </button>
+      </div>
+
+      <div className="border border-line rounded-[12px] bg-white overflow-hidden shadow-[0_10px_24px_rgba(16,24,40,0.04)] mb-[14px]">
+        <div className="min-h-[50px] flex flex-wrap items-center justify-between gap-[12px] border-b border-line bg-[#fbfcff] p-[12px_14px]">
+          <div>
+            <h2 className="m-0 text-navy text-[15px] leading-[1.1] font-black">Cloud admin console</h2>
+            <p className="m-0 mt-1 text-muted text-[12px] leading-[1.3] font-semibold">Firebase identities, customers, businesses, profile images, posts, videos, storage rows, and raw Firestore records.</p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <button className="min-h-[34px] rounded-[999px] border border-line bg-white text-navy inline-flex items-center justify-center px-3 text-[12px] font-extrabold hover:bg-slate-50 transition-colors">Refresh cloud</button>
+            <button className="min-h-[34px] rounded-[999px] border border-orange-brand bg-orange-brand text-white inline-flex items-center justify-center px-3 text-[12px] font-extrabold hover:bg-[#e65c00] transition-colors">Show all</button>
+          </div>
+        </div>
+        <div className="p-[14px]">
+          <div className="border border-line rounded-[10px] bg-[#f8fafc] p-[10px] mb-[10px] text-[#344054] text-[12.5px] font-bold">
+            Sign in first, then open this admin page with the EMY admin account.
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-[12px] mb-[10px]">
+            {['PEOPLE', 'AUTH USERS', 'CONTENT', 'RAW STORAGE'].map(label => (
+              <div key={label} className="border border-line rounded-[10px] bg-white p-[14px]">
+                <small className="block text-muted text-[10px] uppercase tracking-widest font-black">{label}</small>
+                <strong className="block mt-2 text-navy text-[24px] leading-none font-black">0</strong>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap gap-1.5 mb-[10px]">
+            {['all', 'identities', 'people', 'content', 'storage', 'analytics'].map((tag, i) => (
+              <span key={tag} className={`min-h-[22px] rounded-[999px] inline-flex items-center px-[9px] text-[10px] font-extrabold border ${i === 0 ? 'bg-orange-50 border-orange-brand/30 text-orange-700' : 'bg-[#eef2f7] border-transparent text-[#475467]'}`}>
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div className="border border-dashed border-line rounded-[10px] bg-[#fbfcff] text-muted p-[26px] text-center text-[13px] font-bold">
+            No cloud records match this filter yet. Sign in as the admin account, then press Refresh cloud.
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-[12px] mb-[14px]">
+        {[
+          { label: 'CUSTOMER ACCOUNTS', val: '1', desc: 'Customer signups and customer profile records.' },
+          { label: 'BUSINESS ACCOUNTS', val: '1', desc: 'Business signups and business profile records.' },
+          { label: 'NEEDS REVIEW', val: '0', desc: 'Pending, reported, draft, or verify status.' },
+          { label: 'LOCAL DATA KEYS', val: '98', desc: 'EMY browser storage keys connected to this admin.' },
+        ].map((metric, i) => (
+          <div key={i} className="border border-line rounded-[12px] bg-white p-[14px] shadow-[0_10px_24px_rgba(16,24,40,0.04)]">
+            <small className="block text-muted text-[11px] uppercase tracking-[0.06em] font-black">{metric.label}</small>
+            <strong className="block mt-[8px] text-navy text-[28px] leading-none font-black">{metric.val}</strong>
+            <span className="block mt-[7px] text-[#667085] text-[12px] leading-[1.35] font-semibold">{metric.desc}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Main layout */}
+      <div className="border border-line rounded-[12px] bg-white overflow-hidden shadow-[0_10px_24px_rgba(16,24,40,0.04)]">
+        <div className="min-h-[50px] flex flex-wrap items-center justify-between gap-[12px] border-b border-line bg-[#fbfcff] p-[12px_14px]">
+          <div>
+            <h2 className="m-0 text-navy text-[15px] leading-[1.1] font-black">Customer home banner</h2>
+            <p className="m-0 mt-1 text-muted text-[11.5px] leading-[1.3] font-semibold">Add images or videos that play in the customer home banner carousel.</p>
+          </div>
+          <button className="min-h-[30px] rounded-[999px] border border-line bg-white text-navy inline-flex items-center justify-center px-3 text-[11px] font-extrabold hover:bg-slate-50 transition-colors">
+            Open customer home
+          </button>
+        </div>
+        
+        <div className="p-[16px] md:p-[24px]">
+          <div className="grid grid-cols-1 xl:grid-cols-[1fr_minmax(400px,0.8fr)] gap-[32px]">
+            
+            {/* Form Column */}
+            <div className="flex flex-col gap-[20px]">
+              
+              <div>
+                <label className="block text-navy text-[13px] font-black mb-[2px]">Kicker</label>
+                <p className="text-muted text-[11px] font-semibold mb-[8px]">Small label above the headline.</p>
+                <input 
+                  type="text" 
+                  defaultValue="EMY banner"
+                  className="w-full border border-line rounded-[8px] bg-white text-navy font-bold p-[10px_12px] text-[13px] outline-none focus:border-orange-brand/50 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-navy text-[13px] font-black mb-[2px]">Headline line one</label>
+                <p className="text-muted text-[11px] font-semibold mb-[8px]">Main text in navy.</p>
+                <input 
+                  type="text" 
+                  defaultValue="We did it"
+                  className="w-full border border-line rounded-[8px] bg-white text-navy font-bold p-[10px_12px] text-[13px] outline-none focus:border-orange-brand/50 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-navy text-[13px] font-black mb-[2px]">Headline line two</label>
+                <p className="text-muted text-[11px] font-semibold mb-[8px]">Orange accent text.</p>
+                <input 
+                  type="text" 
+                  defaultValue="for you."
+                  className="w-full border border-line rounded-[8px] bg-white text-navy font-bold p-[10px_12px] text-[13px] outline-none focus:border-orange-brand/50 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-navy text-[13px] font-black mb-[2px]">Banner body</label>
+                <p className="text-muted text-[11px] font-semibold mb-[8px]">Short supporting sentence.</p>
+                <textarea 
+                  rows={2}
+                  defaultValue="EMY can publish campaign images or short videos here from the backend."
+                  className="w-full border border-line rounded-[8px] bg-white text-navy font-bold p-[10px_12px] text-[13px] outline-none focus:border-orange-brand/50 transition-colors resize-none"
+                />
+              </div>
+
+              <div>
+                <label className="block text-navy text-[13px] font-black mb-[2px]">Chips</label>
+                <p className="text-muted text-[11px] font-semibold mb-[8px]">Separate each chip with a comma.</p>
+                <input 
+                  type="text" 
+                  defaultValue="Images, Videos, Campaigns"
+                  className="w-full border border-line rounded-[8px] bg-white text-navy font-bold p-[10px_12px] text-[13px] outline-none focus:border-orange-brand/50 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-navy text-[13px] font-black mb-[2px]">Status</label>
+                <p className="text-muted text-[11px] font-semibold mb-[8px]">Pause hides the custom banner and shows the default.</p>
+                <select className="w-full border border-line rounded-[8px] bg-white text-navy font-bold p-[10px_12px] text-[13px] outline-none focus:border-orange-brand/50 transition-colors appearance-none">
+                  <option>active</option>
+                  <option>paused</option>
+                </select>
+              </div>
+
+              <div className="border border-dashed border-line rounded-[8px] p-[10px] bg-[#fbfcff] flex items-center gap-[12px]">
+                <button className="min-h-[28px] rounded-[6px] border border-line bg-white text-navy inline-flex items-center justify-center px-[10px] text-[11px] font-extrabold hover:bg-slate-50 transition-colors">
+                  Choose files
+                </button>
+                <span className="text-muted text-[12px] font-semibold">No file chosen</span>
+              </div>
+
+              <div>
+                <button className="min-h-[30px] rounded-[6px] border border-line bg-white text-navy inline-flex items-center justify-center px-[14px] text-[11px] font-extrabold hover:bg-slate-50 transition-colors">
+                  Clear all media
+                </button>
+              </div>
+
+              <div className="border border-dashed border-[#fedf89] rounded-[8px] bg-[#fff7ed] p-[14px] text-[#b54708] text-[12px] font-bold">
+                No banner media added yet.
+              </div>
+
+              <div className="flex flex-wrap justify-between items-center mt-[4px]">
+                <div className="flex flex-wrap gap-[6px]">
+                  <span className="inline-flex items-center px-[8px] py-[2px] rounded-[4px] bg-[#ecfdf3] text-[#027a48] text-[10px] font-black uppercase tracking-wide">emyAdminHomeBanner</span>
+                  <span className="inline-flex items-center px-[8px] py-[2px] rounded-[4px] bg-[#eff8ff] text-blue-brand text-[10px] font-black uppercase tracking-wide">active</span>
+                  <span className="inline-flex items-center px-[8px] py-[2px] rounded-[4px] bg-[#eff8ff] text-blue-brand text-[10px] font-black uppercase tracking-wide">0 media slides</span>
+                </div>
+                <div className="flex flex-wrap gap-[8px]">
+                  <button className="min-h-[30px] rounded-[6px] border border-orange-brand bg-white text-orange-brand inline-flex items-center justify-center px-[16px] text-[11.5px] font-extrabold hover:bg-[#fff7ed] transition-colors">
+                    Save banner
+                  </button>
+                  <button className="min-h-[30px] rounded-[6px] border border-line bg-white text-navy inline-flex items-center justify-center px-[16px] text-[11.5px] font-extrabold hover:bg-slate-50 transition-colors">
+                    Reset default
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Live Preview Column */}
+            <div className="flex items-start justify-center">
+              
+              {/* Banner Preview Card */}
+              <div className="w-full max-w-[500px] rounded-[16px] overflow-hidden shadow-[0_12px_32px_rgba(16,24,40,0.08)] bg-gradient-to-br from-[#fff7ed] via-[#ffedd5] to-[#fedf89] relative">
+                
+                {/* Decorative blobs/shapes for the banner */}
+                <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-orange-brand/20 blur-[60px] rounded-full translate-x-1/3 -translate-y-1/3"></div>
+                <div className="absolute bottom-0 left-0 w-[250px] h-[150px] bg-white/40 blur-[40px] rounded-full -translate-x-1/4 translate-y-1/4"></div>
+
+                <div className="relative p-[28px] md:p-[36px] flex gap-[20px] items-start">
+                  
+                  {/* Mock App Icon */}
+                  <div className="w-[48px] h-[48px] shrink-0 rounded-[12px] bg-orange-brand flex items-center justify-center shadow-lg mt-1">
+                    <span className="text-white font-black text-[22px] leading-none">M</span>
+                  </div>
+
+                  {/* Banner Content */}
+                  <div className="flex-1">
+                    <div className="mb-[10px]">
+                      <span className="inline-flex items-center px-[10px] py-[4px] rounded-[999px] bg-white text-orange-brand text-[9px] font-black uppercase tracking-widest shadow-sm">
+                        EMY BANNER
+                      </span>
+                    </div>
+                    
+                    <h1 className="m-0 text-navy text-[26px] md:text-[30px] font-black leading-[1.1] tracking-tight">
+                      We did it
+                    </h1>
+                    <h2 className="m-0 text-orange-brand text-[26px] md:text-[30px] font-black leading-[1.1] tracking-tight mb-[10px]">
+                      for you.
+                    </h2>
+                    
+                    <p className="m-0 text-navy/80 text-[13px] font-bold leading-[1.4] mb-[16px] max-w-[260px]">
+                      EMY can publish campaign images or short videos here from the backend.
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-[6px]">
+                      {['Images', 'Videos', 'Campaigns'].map((chip, i) => (
+                        <span key={i} className="inline-flex items-center px-[12px] py-[4px] rounded-[999px] bg-white/60 backdrop-blur-sm border border-white/40 text-navy text-[10px] font-extrabold shadow-sm">
+                          {chip}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  )
+}
